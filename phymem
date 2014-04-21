@@ -1,0 +1,9 @@
+phymem.obj:	phymem.asm
+# PHYSEG  = 0b800h     EGA window segment
+# SEGSIZE = 0fa0h      EGA window size, 80 * 25 * 2
+	masm /W2 /p /DPHYSEG=0b800h /DSEGSIZE=0fa0h phymem,phymem;
+
+\os2\phymem.sys:	phymem.obj phymem.def
+	link /noi phymem,phymem.sys,,doscalls,phymem;
+	copy phymem.sys \os2
+	del phymem.sys

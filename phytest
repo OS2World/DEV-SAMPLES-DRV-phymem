@@ -1,0 +1,5 @@
+phytest.obj:	phytest.c
+	cl /AL /DSEGSIZE=4000 /W3 /c phytest.c
+
+phytest.exe:	phytest.obj 
+	link phytest;
